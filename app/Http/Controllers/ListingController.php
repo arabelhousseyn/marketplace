@@ -48,7 +48,7 @@ class ListingController extends Controller
            ]);
            if($Listing)
            {
-               $attributes = new ListingAttribute(['attribute' => "model",'value'=>'citadine']);
+               $attributes = new ListingAttribute($request->attributes);
                $Listing->attributes()->save($attributes);
                return response()->json($Listing->with('attributes')->get(), 200);
            }else{
@@ -97,7 +97,22 @@ class ListingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $listing = Listing::findOrFail($id);
+    
+        $listing->update([
+            'title' => $request->title,
+            'price' => $request->price,
+            'description' => $request->description,
+            'location' => $request->location,
+            'category_id' => $request->category_id,
+            'available' => $request->available
+        ]);
+            return response()->json($listing, 200);
+        } catch (NotFoundHttpException $th) {
+            return response()->json(['message' => 'not found'], 404);
+        }
+        
     }
 
     /**
@@ -108,6 +123,13 @@ class ListingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $listing = Listing::findOrFail($id);
+    
+            $listing->delete();
+            return response()->json($listing, 200);
+        } catch (NotFoundHttpException $th) {
+            return response()->json(['message' => 'not found'], 404);
+        }
     }
 }
