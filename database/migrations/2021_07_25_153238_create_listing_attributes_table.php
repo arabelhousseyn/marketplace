@@ -17,10 +17,9 @@ class CreateListingAttributesTable extends Migration
             $table->id();
             $table->string('attribute');
             $table->string('value');
-            $table->unsignedBigInteger('listing_id');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('listing_id')->references('id')->on('listings');
+            $table->foreignId('listing_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -17,13 +17,12 @@ class CreateListingsTable extends Migration
             $table->id();
             $table->string('title');
             $table->double('price',10,2);
-            $table->unsignedBigInteger('category_id');
             $table->longText('description');
             $table->string('location');
             $table->boolean('available');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

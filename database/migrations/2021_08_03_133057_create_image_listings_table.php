@@ -15,11 +15,9 @@ class CreateImageListingsTable extends Migration
     {
         Schema::create('image_listing', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('listing_id');
-            $table->unsignedBigInteger('image_id');
             $table->timestamps();
-            $table->foreign('image_id')->references('id')->on('images');
-            $table->foreign('listing_id')->references('id')->on('listings');
+            $table->foreignId('image_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('listing_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->softDeletes();
         });
     }
