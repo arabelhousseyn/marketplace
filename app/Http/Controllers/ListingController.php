@@ -43,7 +43,6 @@ class ListingController extends Controller
                'price' => $request->price,
                'description' => $request->description,
                'location' => $request->location,
-               'available' => 0,
                'category_id' => $request->category_id
            ]);
            if($Listing)

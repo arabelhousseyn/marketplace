@@ -19,7 +19,7 @@ class CreateListingsTable extends Migration
             $table->double('price',10,2);
             $table->longText('description');
             $table->string('location');
-            $table->boolean('available');
+            $table->boolean('available')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
