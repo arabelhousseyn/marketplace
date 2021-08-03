@@ -28,6 +28,7 @@ class ListingRequest extends FormRequest
            'price' => 'required',
            'description' => 'required',
            'location' => 'required',
+           "category_id" => 'required'
         ];
     }
 }

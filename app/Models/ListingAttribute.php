@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ListingAttribute extends Model
 {
     use HasFactory;
+    protected $fillable = ['attribute','value','listing_id'];
+    protected $hidden = ['listing_id'];
 }

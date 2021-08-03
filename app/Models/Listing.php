@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Listing extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable = ['title','price','description','location','available'];
-    protected $hidden = ['id','created_at','updated_at','deleted_at'];
+    protected $fillable = ['title','price','description','location','available','category_id'];
+    protected $hidden = ['id','created_at','updated_at','deleted_at','category_id'];
 
 
     public function images()

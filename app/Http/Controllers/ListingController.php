@@ -36,7 +36,27 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
-       
+       if($request->validated())
+       {
+           $Listing = Listing::create([
+               'title' => $request->title,
+               'price' => $request->price,
+               'description' => $request->description,
+               'location' => $request->location,
+               'available' => 0,
+               'category_id' => $request->category_id
+           ]);
+           if($Listing)
+           {
+               $attributes = new ListingAttribute(['attribute' => "model",'value'=>'citadine']);
+               $Listing->attributes()->save($attributes);
+               return response()->json($Listing->with('attributes')->get(), 200);
+           }else{
+            abort(500,['message' => 'error']);
+           }
+       }else{
+           abort(500,['message' => $request]);
+       }
     }
 
     /**
@@ -47,7 +67,14 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $listing = Listing::findOrFail($id)->with('attributes')->get();
+            return response()->json($listing, 200);
+            
+        } catch (NotFoundHttpException $th) {
+            return response()->json(['message' => 'not found'], 404);
+        }
+
     }
 
     /**
