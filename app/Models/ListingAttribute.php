@@ -9,5 +9,5 @@ class ListingAttribute extends Model
 {
     use HasFactory;
     protected $fillable = ['attribute','value','listing_id'];
-    protected $hidden = ['listing_id'];
+    protected $hidden = ['id','listing_id'];
 }
