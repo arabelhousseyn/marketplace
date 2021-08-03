@@ -46,7 +46,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
-            Category::findOrFail($id);
             return response()->json(Category::findOrFail($id), 200);
         } catch (Throwable $th) {
             return response()->json(['message' => 'not found'], 500);
