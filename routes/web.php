@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
  Route::view('/', 'main');
 
-Route::view('/{slug?}', 'main')->where('slug', '.*');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,10 +21,12 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     /// categories
     Route::resource('categories', CategoryController::class);
     Route::get('categories/restore/{id}',[CategoryController::class,'restore'])->where('id','[0-9]+');
-    Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('auth:admin');
+    Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('admin');
     Route::get('categories/subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
     // listings 
      Route::resource('listing', ListingController::class);
+     // admin login
+     Route::post('adminLogin',[AdminController::class,'index']);
     });
     
 
