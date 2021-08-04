@@ -57,7 +57,7 @@ class ListingController extends Controller
 
                if($request->hasfile('images'))
                {
-                   foreach ($request->file('images') as $value) {
+                foreach ($request->file('images') as $value) {
                        $path = $value->getClientOriginalName() . '.' . $value->extension();
                        $paths[] = $path;
                        $value->storeAs('listing',$path);

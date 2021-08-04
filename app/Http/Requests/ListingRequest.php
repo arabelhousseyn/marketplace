@@ -29,7 +29,7 @@ class ListingRequest extends FormRequest
            'description' => 'required',
            'location' => 'required',
            "category_id" => 'required',
-            'images.*' => 'mimes:jpeg,jpg,png,gif|max:2048'
+        'images.*' => 'mimes:jpeg,jpg,png,gif|max:2048'
         ];
     }
 }

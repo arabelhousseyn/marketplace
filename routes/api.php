@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('auth:admin');
     Route::get('categories/subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
     // listings 
-    Route::resource('listing', ListingController::class);
+     Route::resource('listing', ListingController::class);
     });
     
 
