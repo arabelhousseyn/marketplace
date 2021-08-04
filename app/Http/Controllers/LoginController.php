@@ -13,7 +13,7 @@ class LoginController extends Controller
         if($request->validated())
         {
             $user= User::where('username', $request->username)->first();
-        // print_r($data);
+            
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
                     'message' => ['These credentials do not match our records.']

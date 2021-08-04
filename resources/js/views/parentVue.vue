@@ -3,13 +3,15 @@
             <div class="box">
                 <div class="heading">
                     <h1 class="title">Today's pick</h1>
-                    <a href="">60 km</a>
+                    <a href="">60 k</a>
                 </div>
                 <div class="divider"></div>
                 <div class="row">
                     <div v-for="(listing,index) in listings" :key="index" class="col-lg-3">
                         <div class="listing">
-                            <img class="image" :src="path + listing.images[0].url" :alt="listing.name_en">
+                            <div v-if="listing.images[0].url != undefined">
+                                <img class="image" :src="path + listing.images[0].url" :alt="listing.name_en">
+                            </div>
                             <span class="price" >
                                 <money-format :value="listing.price" locale='fr' currency-code='DZD'></money-format>
                             </span>

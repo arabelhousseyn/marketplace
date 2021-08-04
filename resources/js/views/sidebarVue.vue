@@ -9,7 +9,7 @@
                <router-link class="inf" to="/inbox"><div class="container info"><i class="fa fa-inbox icon"></i> <span>Inbox</span></div></router-link>
                <router-link class="inf" to="/account"><div class="container info"><i class="fa fa-user icon"></i> <span>Your account</span></div></router-link>
                <div class="divider"></div>
-               <div class="container"><a class="inf1" href=""><div class="info1"><i class="fa fa-plus"></i> <span>Create New Listing</span></div></a></div>
+               <div class="container"><router-link class="inf1" to="/listings"><div class="info1"><i class="fa fa-plus"></i> <span>Create New Listing</span></div></router-link></div>
                <div class="divider"></div>
                <div class="container">
                 <h1 class="title">Categories</h1>

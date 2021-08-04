@@ -4,7 +4,7 @@ export default {
         cors()
         {
             let headers = {
-                Authorization : "Bearer 1|6pIEkuLV60B17fyckQ2SaXlUeC4tKzD7HJO8kuaZ",
+                Authorization : "Bearer 1|FPtdQUvNIw9b75IzeKD76uc03xdfxR1SDwB1L1wI",
             }
             return {headers}
         },

@@ -2049,7 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     cors: function cors() {
       var headers = {
-        Authorization: "Bearer 1|6pIEkuLV60B17fyckQ2SaXlUeC4tKzD7HJO8kuaZ"
+        Authorization: "Bearer 1|FPtdQUvNIw9b75IzeKD76uc03xdfxR1SDwB1L1wI"
       };
       return {
         headers: headers
@@ -3250,11 +3250,28 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "divider" }),
           _vm._v(" "),
-          _vm._m(1),
+          _c(
+            "div",
+            { staticClass: "container" },
+            [
+              _c(
+                "router-link",
+                { staticClass: "inf1", attrs: { to: "/listings" } },
+                [
+                  _c("div", { staticClass: "info1" }, [
+                    _c("i", { staticClass: "fa fa-plus" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Create New Listing")])
+                  ])
+                ]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "divider" }),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _vm._l(_vm.categories, function(category, index) {
             return _c(
@@ -3289,20 +3306,6 @@ var staticRenderFns = [
         _c("i", { staticClass: "fa fa-home icon" }),
         _vm._v(" "),
         _c("span", [_vm._v("Browse all")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("a", { staticClass: "inf1", attrs: { href: "" } }, [
-        _c("div", { staticClass: "info1" }, [
-          _c("i", { staticClass: "fa fa-plus" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("Create New Listing")])
-        ])
       ])
     ])
   },

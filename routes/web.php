@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::view('/', 'main');
 
-Route::get('/{slug?}', function () {
-    return view('main');
-})->where('slug', '.*');
+Route::view('/{slug?}', 'main')->where('slug', '.*');

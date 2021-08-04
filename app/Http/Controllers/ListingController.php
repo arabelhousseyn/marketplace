@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Listing;
 use App\Models\ListingAttribute;
+use App\Models\ImageListing;
+use App\Models\Image;
 use App\Http\Requests\ListingRequest;
 class ListingController extends Controller
 {
@@ -36,6 +38,8 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
+        $paths = array();
+
        if($request->validated())
        {
            $Listing = Listing::create([
@@ -43,13 +47,35 @@ class ListingController extends Controller
                'price' => $request->price,
                'description' => $request->description,
                'location' => $request->location,
-               'category_id' => $request->category_id
+               'category_id' => $request->category_id,
+               'available' => 0,
            ]);
            if($Listing)
            {
                $attributes = new ListingAttribute($request->attributes);
                $Listing->attributes()->save($attributes);
-               return response()->json($Listing->with('attributes')->get(), 200);
+
+               if($request->hasfile('images'))
+               {
+                   foreach ($request->file('images') as $value) {
+                       $path = $value->getClientOriginalName() . '.' . $value->extension();
+                       $paths[] = $path;
+                       $value->storeAs('listing',$path);
+                   }
+                   foreach ($paths as $path) {
+                      $image = Image::create([
+                           'url' => $path,
+                       ]);
+                       ImageListing::create([
+                           'image_id' => $image->id,
+                           'listing_id' => $Listing->id,
+                       ]);
+                   }
+               }
+
+
+
+               return response()->json($Listing->with('attributes','images')->get(), 200);
            }else{
             abort(500,['message' => 'error']);
            }

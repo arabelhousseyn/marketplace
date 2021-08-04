@@ -28,7 +28,8 @@ class ListingRequest extends FormRequest
            'price' => 'required',
            'description' => 'required',
            'location' => 'required',
-           "category_id" => 'required'
+           "category_id" => 'required',
+            'images.*' => 'mimes:jpeg,jpg,png,gif|max:2048'
         ];
     }
 }

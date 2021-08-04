@@ -37,6 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -158,13 +160,17 @@ var render = function() {
         _vm._l(_vm.listings, function(listing, index) {
           return _c("div", { key: index, staticClass: "col-lg-3" }, [
             _c("div", { staticClass: "listing" }, [
-              _c("img", {
-                staticClass: "image",
-                attrs: {
-                  src: _vm.path + listing.images[0].url,
-                  alt: listing.name_en
-                }
-              }),
+              listing.images[0].url != undefined
+                ? _c("div", [
+                    _c("img", {
+                      staticClass: "image",
+                      attrs: {
+                        src: _vm.path + listing.images[0].url,
+                        alt: listing.name_en
+                      }
+                    })
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "span",
@@ -198,7 +204,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "heading" }, [
       _c("h1", { staticClass: "title" }, [_vm._v("Today's pick")]),
       _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("60 km")])
+      _c("a", { attrs: { href: "" } }, [_vm._v("60 k")])
     ])
   }
 ]

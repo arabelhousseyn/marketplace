@@ -9,4 +9,5 @@ class Image extends Model
 {
     use HasFactory,SoftDeletes;
     protected $hidden = ['pivot'];
+    protected $fillable = ['url'];
 }

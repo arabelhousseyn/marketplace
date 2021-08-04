@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     /// categories
     Route::resource('categories', CategoryController::class);
     Route::get('categories/restore/{id}',[CategoryController::class,'restore'])->where('id','[0-9]+');
-    Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+');
+    Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('auth:admin');
     Route::get('categories/subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
     // listings 
     Route::resource('listing', ListingController::class);
