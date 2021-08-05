@@ -10,7 +10,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '../views/parentVue.vue')
   },
   {
-    path : "/category/:id",
+    path : "/main/category/:id",
     name: "categoryVue",
     component: categoryVue
   },

@@ -2351,7 +2351,7 @@ var routes = [{
     return __webpack_require__.e(/*! import() | home */ "home").then(__webpack_require__.bind(__webpack_require__, /*! ../views/parentVue.vue */ "./resources/js/views/parentVue.vue"));
   }
 }, {
-  path: "/category/:id",
+  path: "/main/category/:id",
   name: "categoryVue",
   component: _views_categoryVue_vue__WEBPACK_IMPORTED_MODULE_0__.default
 }];
@@ -3991,7 +3991,7 @@ var render = function() {
             _vm.auth != ""
               ? _c(
                   "router-link",
-                  { staticClass: "inf", attrs: { to: "/notification" } },
+                  { staticClass: "inf", attrs: { to: "/main/notification" } },
                   [
                     _c("div", { staticClass: "container info" }, [
                       _c("i", { staticClass: "fa fa-bell icon" }),
@@ -4005,7 +4005,7 @@ var render = function() {
             _vm.auth != ""
               ? _c(
                   "router-link",
-                  { staticClass: "inf", attrs: { to: "/inbox" } },
+                  { staticClass: "inf", attrs: { to: "/main/inbox" } },
                   [
                     _c("div", { staticClass: "container info" }, [
                       _c("i", { staticClass: "fa fa-inbox icon" }),
@@ -4019,7 +4019,7 @@ var render = function() {
             _vm.auth != ""
               ? _c(
                   "router-link",
-                  { staticClass: "inf", attrs: { to: "/account" } },
+                  { staticClass: "inf", attrs: { to: "/main/account" } },
                   [
                     _c("div", { staticClass: "container info" }, [
                       _c("i", { staticClass: "fa fa-user icon" }),
@@ -4046,7 +4046,7 @@ var render = function() {
                 {
                   key: index,
                   staticClass: "inf",
-                  attrs: { href: "/category/" + category.id }
+                  attrs: { href: "/main/category/" + category.id }
                 },
                 [
                   _c("div", { staticClass: "container info" }, [

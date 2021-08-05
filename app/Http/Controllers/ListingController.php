@@ -18,8 +18,9 @@ class ListingController extends Controller
      */
     public function index()
     {
+
         return response()->json(
-             ListingResource::collection(Listing::with('attributes','images')->where('available',0)->get())
+             ListingResource::collection(Listing::with('images')->AvailableAndArrang(0,'DESC')->get())
             , 200
         );
     }
@@ -42,7 +43,6 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
-
        if($request->validated())
        {
            $listing = Listing::create([

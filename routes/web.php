@@ -13,7 +13,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
- Route::view('/', 'main');
-
+Route::view('/', 'main');
+Route::view('main/{slug?}', 'main')->where('slug','.*');
 
 Auth::routes();
