@@ -15,7 +15,8 @@
                             <div v-else>
                                 <img class="image" src="http://via.placeholder.com/226" alt="images">
                             </div>
-                            <span class="price" >
+                            <span class="title">{{listing.title}}</span>
+                            <span class="price">
                                 <money-format :value="listing.price" locale='fr' currency-code='DZD'></money-format>
                             </span>
                             <span class="location" >{{listing.location.formatted_address}}</span>
@@ -26,7 +27,11 @@
             </div>
           </div>
 </template>
-
+<style>
+.title{
+    font-size: 30px;
+}
+</style>
 <script>
 import MoneyFormat from 'vue-money-format'
 import axios from 'axios'
