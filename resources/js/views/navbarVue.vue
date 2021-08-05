@@ -4,7 +4,7 @@
            <div class="mainContent">
                <div class="content">
                    <div class="logo">
-                       <h2>Im</h2>
+                       <h2>MarketPlace</h2>
                    </div>
                    <div class="search">
                        <div class="boxSearch">
@@ -14,7 +14,8 @@
                    </div>
                    <div class="trailing">
                        <div class="trail">
-                        <a id="login" href="">Login</a>
+                        <a v-if="auth == ''" id="login" href="/login">Login</a>
+                        <a v-else href="/profile">{{auth.fname}}</a>
                        </div>
                    </div>
                </div>
@@ -22,3 +23,17 @@
        </header>
    </div>
 </template>
+
+<script>
+export default {
+    data :()=>{
+        return{
+            auth : "",
+        }
+    },
+    created()
+    {
+        this.auth = this.$store.state.auth
+    }
+}
+</script>

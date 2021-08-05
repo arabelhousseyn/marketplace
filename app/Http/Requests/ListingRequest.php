@@ -24,11 +24,12 @@ class ListingRequest extends FormRequest
     public function rules()
     {
         return [
-           'title' => 'required|max:255',
-           'price' => 'required',
-           'description' => 'required',
-           'location' => 'required',
+           'title' => 'required|max:255|string',
+           'price' => 'required|numeric',
+           'description' => 'required|string',
+           'location' => 'required|string',
            "category_id" => 'required',
+           "attributes" => "string",
         'images.*' => 'mimes:jpeg,jpg,png,gif|max:2048'
         ];
     }

@@ -11,7 +11,7 @@ class Listing extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = ['title','price','description','location','available','category_id'];
-    protected $hidden = ['id','created_at','updated_at','deleted_at','category_id'];
+    protected $hidden = ['id','updated_at','deleted_at','category_id','available'];
 
 
     public function images()
@@ -21,6 +21,6 @@ class Listing extends Model
 
     public function attributes()
     {
-        return $this->hasMany(ListingAttribute::class,'listing_id');
+        return $this->hasMany(ListingAttribute::class);
     }
 }

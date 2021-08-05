@@ -2,6 +2,6 @@
 @section('title','main')
     @section('content')
         <div id="app">
-            <main-vue />
+            <main-vue auth="{{ Auth::user() }}" />
         </div>
 @endsection

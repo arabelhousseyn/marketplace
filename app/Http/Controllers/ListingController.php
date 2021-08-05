@@ -8,6 +8,7 @@ use App\Models\ListingAttribute;
 use App\Models\ImageListing;
 use App\Models\Image;
 use App\Http\Requests\ListingRequest;
+use App\Http\Resources\ListingResource;
 class ListingController extends Controller
 {
     /**
@@ -17,7 +18,10 @@ class ListingController extends Controller
      */
     public function index()
     {
-        return response()->json(Listing::with('attributes','images')->get(), 200);
+        return response()->json(
+             ListingResource::collection(Listing::with('attributes','images')->where('available',0)->get())
+            , 200
+        );
     }
 
     /**
@@ -38,11 +42,10 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
-        $paths = array();
 
        if($request->validated())
        {
-           $Listing = Listing::create([
+           $listing = Listing::create([
                'title' => $request->title,
                'price' => $request->price,
                'description' => $request->description,
@@ -50,32 +53,31 @@ class ListingController extends Controller
                'category_id' => $request->category_id,
                'available' => 0,
            ]);
-           if($Listing)
+           if($listing)
            {
-               $attributes = new ListingAttribute($request->attributes);
-               $Listing->attributes()->save($attributes);
-
-               if($request->hasfile('images'))
-               {
-                foreach ($request->file('images') as $value) {
-                       $path = $value->getClientOriginalName() . '.' . $value->extension();
-                       $paths[] = $path;
-                       $value->storeAs('listing',$path);
-                   }
-                   foreach ($paths as $path) {
-                      $image = Image::create([
-                           'url' => $path,
-                       ]);
-                       ImageListing::create([
-                           'image_id' => $image->id,
-                           'listing_id' => $Listing->id,
-                       ]);
-                   }
+               $attrs = json_decode($request->attributess,true);
+               
+               foreach ($attrs as $attr) {
+                $attributes = new ListingAttribute((array) $attr);
+                $listing->attributes()->save($attributes);
                }
 
+                       for ($i=0; $i <$request->numberImages; $i++) {
+                        $imageName = 'images' . $i; 
+                        $file = $request->$imageName;
+                        $path = $file->getClientOriginalName() . '.' . $file->extension();
+                        $file->storeAs('public/listing',$path);
+                
+                       $image = Image::create([
+                            'url' => $path,
+                        ]);
+                        ImageListing::create([
+                            'image_id' => $image->id,
+                            'listing_id' => $listing->id,
+                        ]);
+                       }
 
-
-               return response()->json($Listing->with('attributes','images')->get(), 200);
+               return response()->json($listing->with('attributes','images')->orderBy('id','DESC')->first(), 200);
            }else{
             abort(500,['message' => 'error']);
            }

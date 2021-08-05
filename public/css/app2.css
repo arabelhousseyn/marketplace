@@ -28,7 +28,7 @@ body{
     background-color: var(--header-background);
     border-bottom: 0.1px solid var(--border-bottom);
     display: block;
-    z-index: 999;
+    z-index: 3;
     overflow: hidden;
     padding-bottom: 10px;
     position: fixed;
@@ -106,7 +106,7 @@ input[type="text"]{
     left: 0;
     top:57px;
     width: 25%;
-    z-index: 999;
+    z-index: 3;
     float: left;
   }
 

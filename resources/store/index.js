@@ -8,7 +8,9 @@ export default new Vuex.Store({
      categories : [],
      Allproducts : [],
      productsByCategory : [],
-     imagePath : 'http://hocine.marketplace/storage/app/public/listing/'
+     imagePath : 'http://hocine.marketplace/storage/app/public/listing/',
+     auth : null,
+     location : '0,0'
   },
   getters : {
   },

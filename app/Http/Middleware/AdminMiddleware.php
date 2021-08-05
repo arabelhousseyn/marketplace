@@ -18,7 +18,7 @@ class AdminMiddleware
     {
         if(!Auth::guard('admin')->check())
         {
-            return response()->json(['message' => 'please login as admin'], 200);
+            return redirect('/login');
         }
 
         return $next($request);

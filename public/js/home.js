@@ -39,6 +39,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -160,7 +164,7 @@ var render = function() {
         _vm._l(_vm.listings, function(listing, index) {
           return _c("div", { key: index, staticClass: "col-lg-3" }, [
             _c("div", { staticClass: "listing" }, [
-              listing.images[0].url != undefined
+              listing.images.length > 0
                 ? _c("div", [
                     _c("img", {
                       staticClass: "image",
@@ -170,7 +174,15 @@ var render = function() {
                       }
                     })
                   ])
-                : _vm._e(),
+                : _c("div", [
+                    _c("img", {
+                      staticClass: "image",
+                      attrs: {
+                        src: "http://via.placeholder.com/226",
+                        alt: "images"
+                      }
+                    })
+                  ]),
               _vm._v(" "),
               _c(
                 "span",
@@ -185,7 +197,11 @@ var render = function() {
                   })
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "location" }, [
+                _vm._v(_vm._s(listing.location.formatted_address))
+              ])
             ])
           ])
         }),
@@ -204,7 +220,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "heading" }, [
       _c("h1", { staticClass: "title" }, [_vm._v("Today's pick")]),
       _vm._v(" "),
-      _c("a", { attrs: { href: "" } }, [_vm._v("60 k")])
+      _c("a", { attrs: { href: "" } }, [_vm._v("60 km")])
     ])
   }
 ]
