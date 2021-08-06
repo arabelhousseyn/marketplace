@@ -4,7 +4,6 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\Geocoder\Facades\Geocoder;
-require 'vendor/autoload.php';
 use Carbon\Carbon;
 
 
