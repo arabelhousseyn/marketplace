@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Listing;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Auth;
 class ListingFactory extends Factory
 {
     /**
@@ -28,6 +28,7 @@ class ListingFactory extends Factory
             'location' => '0,0',
             'category_id' => 1,
             'available' => 0,
+            'user_id' => 4
         ];
     }
 }

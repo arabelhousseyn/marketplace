@@ -9,6 +9,7 @@ use App\Models\ImageListing;
 use App\Models\Image;
 use App\Http\Requests\ListingRequest;
 use App\Http\Resources\ListingResource;
+use Auth;
 class ListingController extends Controller
 {
     /**
@@ -52,6 +53,7 @@ class ListingController extends Controller
                'location' => $request->location,
                'category_id' => $request->category_id,
                'available' => 0,
+               'user_id' => Auth::user()->id
            ]);
            if($listing)
            {
@@ -95,8 +97,9 @@ class ListingController extends Controller
     public function show($id)
     {
         try {
-            $listing = Listing::findOrFail($id)->with('attributes')->get();
-            return response()->json($listing, 200);
+            return response()->json(
+                new ListingResource(Listing::with('attributes','categories','images','user')->findOrFail($id)),200
+            );
             
         } catch (NotFoundHttpException $th) {
             return response()->json(['message' => 'not found'], 404);

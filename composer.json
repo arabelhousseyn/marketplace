@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "nesbot/carbon": "^2.51",
         "spatie/geocoder": "^3.10"
     },
     "require-dev": {

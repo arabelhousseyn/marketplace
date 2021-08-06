@@ -66,6 +66,11 @@ __webpack_require__.r(__webpack_exports__);
     'money-format': vue_money_format__WEBPACK_IMPORTED_MODULE_0__.default,
     spinnerLoading: _components_spinnerLoading_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
+  methods: {
+    move: function move(value) {
+      this.$router.push("/main/product/".concat(value.id));
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -332,46 +337,57 @@ var render = function() {
             { staticClass: "row" },
             _vm._l(_vm.listings, function(listing, index) {
               return _c("div", { key: index, staticClass: "col-lg-3" }, [
-                _c("div", { staticClass: "listing" }, [
-                  listing.images.length > 0
-                    ? _c("div", [
-                        _c("img", {
-                          staticClass: "image",
+                _c(
+                  "div",
+                  {
+                    staticClass: "listing",
+                    on: {
+                      click: function($event) {
+                        return _vm.move(listing)
+                      }
+                    }
+                  },
+                  [
+                    listing.images.length > 0
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "image",
+                            attrs: {
+                              src: _vm.path + listing.images[0].url,
+                              alt: listing.name_en
+                            }
+                          })
+                        ])
+                      : _c("div", [
+                          _c("img", {
+                            staticClass: "image",
+                            attrs: {
+                              src: "http://via.placeholder.com/226",
+                              alt: "images"
+                            }
+                          })
+                        ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "title" }, [
+                      _vm._v(_vm._s(listing.title))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "price" },
+                      [
+                        _c("money-format", {
                           attrs: {
-                            src: _vm.path + listing.images[0].url,
-                            alt: listing.name_en
+                            value: listing.price,
+                            locale: "fr",
+                            "currency-code": "DZD"
                           }
                         })
-                      ])
-                    : _c("div", [
-                        _c("img", {
-                          staticClass: "image",
-                          attrs: {
-                            src: "http://via.placeholder.com/226",
-                            alt: "images"
-                          }
-                        })
-                      ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "title" }, [
-                    _vm._v(_vm._s(listing.title))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    { staticClass: "price" },
-                    [
-                      _c("money-format", {
-                        attrs: {
-                          value: listing.price,
-                          locale: "fr",
-                          "currency-code": "DZD"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
+                      ],
+                      1
+                    )
+                  ]
+                )
               ])
             }),
             0

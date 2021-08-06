@@ -8,7 +8,7 @@
                 <div class="divider"></div>
                 <div v-if="listings.length > 0" class="row">
                     <div v-for="(listing,index) in listings" :key="index" class="col-lg-3">
-                        <div class="listing">
+                        <div @click="move(listing)" class="listing">
                             <div v-if="listing.images.length > 0">
                                 <img class="image" :src="path + listing.images[0].url" :alt="listing.name_en">
                             </div>
@@ -49,6 +49,12 @@ export default {
     components : {
         'money-format': MoneyFormat,
         spinnerLoading
+    },
+    methods : {
+        move(value)
+        {
+            this.$router.push(`/main/product/${value.id}`)
+        }
     },
     mounted()
     {

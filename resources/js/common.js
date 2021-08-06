@@ -4,7 +4,7 @@ export default {
         cors()
         {
             let headers = {
-                Authorization : "Bearer 1|vLk8rYDiSejBL4fDr1kgaggyUHK3UyKoIxREJRaR",
+                Authorization : "Bearer 1|eEi7hwzDZPvD4LAvCeTTFRlMbGGcep2Dv8JomWXg",
                 'content-type': 'multipart/form-data'
             }
             return {headers}

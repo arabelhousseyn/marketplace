@@ -11,8 +11,16 @@ import router from './router/router';
 import mainVue from './views/mainVue.vue'
 
 import store from '../store'
-import MoneyFormat from 'vue-money-format'
 
+import * as VueGoogleMaps from 'vue2-google-maps'
+ 
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDGy4IaSCDzTFd9eW7H1Iovy7xEc5sNOSE',
+    libraries: 'places',
+  },
+ 
+})
 
 const app = new Vue({
     el: '#app',

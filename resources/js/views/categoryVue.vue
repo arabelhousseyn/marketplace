@@ -54,6 +54,22 @@ export default {
                this.subCategory = e.data
             }
         })
+    },
+    methods: {
+    fetchData(id) {
+        axios.get('/api/categories/subCategories/' + id ,this.cors())
+        .then(e => {
+            this.subCategory =  e.data
+        });
     }
+},
+    watch: {
+    '$route.params': {
+        handler(value) {
+            this.fetchData(value.id)
+        },
+        
+    }
+}
 }
 </script>
