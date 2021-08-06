@@ -2216,6 +2216,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2227,7 +2303,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    'money-format': vue_money_format__WEBPACK_IMPORTED_MODULE_1__.default
+    "money-format": vue_money_format__WEBPACK_IMPORTED_MODULE_1__.default
   },
   methods: {
     back: function back() {
@@ -2257,7 +2333,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     run["catch"](function (e) {
       if (e.response.status == 404 && e.response.statusText == "Not Found") {
-        _this.$router.push('/');
+        _this.$router.push("/");
       }
     });
   }
@@ -2725,7 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.blured{\n    position: fixed;\n     top: 57px;\n     left: 0;\n     right: 0;\n     z-index: -999;\n     filter: blur(50px);\n     height: 100%;\n     background-repeat: no-repeat;\n     background-position: center;\n     background-size: cover;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.blured {\r\n  position: fixed;\r\n  top: 57px;\r\n  left: 0;\r\n  right: 0;\r\n  z-index: -999;\r\n  filter: blur(50px);\r\n  height: 100%;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5065,9 +5141,9 @@ var render = function() {
                             _vm._v(
                               "Listed " +
                                 _vm._s(_vm.listing.created_at) +
-                                " in " +
+                                " in\n                      " +
                                 _vm._s(_vm.listing.location.formatted_address) +
-                                " "
+                                "\n                    "
                             )
                           ])
                         ]),
@@ -5113,7 +5189,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("span", { staticClass: "join" }, [
                               _vm._v(
-                                "Joined marketplace in " +
+                                "Joined marketplace in\n                        " +
                                   _vm._s(
                                     _vm.listing.user.created_at.split("-")[0]
                                   )
@@ -5209,7 +5285,7 @@ var staticRenderFns = [
               staticClass: "btn btn-primary form-control send",
               attrs: { type: "submit" }
             },
-            [_vm._v("Send")]
+            [_vm._v("\n                        Send\n                      ")]
           )
         ])
       ])
