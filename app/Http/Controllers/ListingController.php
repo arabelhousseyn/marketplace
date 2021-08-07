@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Listing;
+use App\Models\User;
 use App\Models\ListingAttribute;
 use App\Models\ImageListing;
 use App\Models\Image;
 use App\Http\Requests\ListingRequest;
 use App\Http\Resources\ListingResource;
+use App\Http\Resources\UserResource;
 use Auth;
 class ListingController extends Controller
 {
@@ -24,16 +26,6 @@ class ListingController extends Controller
              ListingResource::collection(Listing::with('images')->AvailableAndArrang(0,'DESC')->get())
             , 200
         );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
     }
 
     /**
@@ -161,5 +153,17 @@ class ListingController extends Controller
         } catch (NotFoundHttpException $th) {
             return response()->json(['message' => 'not found'], 404);
         }
+    }
+
+
+    public function listingsByUser($username)
+    {
+       $user = User::with('listings')->where('username',$username)->first();
+       if($user)
+       {
+        return new UserResource($user);
+       }   
+       
+       return response()->json(['message' => 'not found'], 404);
     }
 }

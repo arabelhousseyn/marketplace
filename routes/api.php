@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('getListingByCategory',[CategoryController::class,'getListingByCategory']);
     // listings 
      Route::resource('listing', ListingController::class);
+     Route::get('listingsByUser/{username}',[ListingController::class,'listingsByUser'])->whereAlphaNumeric('username');
      // admin login
      Route::post('adminLogin',[AdminController::class,'index']);
     });

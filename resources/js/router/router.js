@@ -22,7 +22,7 @@ const routes = [
     component: listingVue
   },
   {
-    path : "/main/profile/",
+    path : "/main/profile/:username",
     name: "profileVue",
     component: profileVue
   },

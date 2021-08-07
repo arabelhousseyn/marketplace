@@ -2656,7 +2656,7 @@ var routes = [{
   name: "listingVue",
   component: _views_listingVue_vue__WEBPACK_IMPORTED_MODULE_1__.default
 }, {
-  path: "/main/profile/",
+  path: "/main/profile/:username",
   name: "profileVue",
   component: _views_profileVue_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }];
@@ -5566,7 +5566,7 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
-                            attrs: { to: "/main/profile/" }
+                            attrs: { to: "/main/profile/" + _vm.auth.username }
                           },
                           [_vm._v("Profile")]
                         ),
@@ -5710,7 +5710,10 @@ var render = function() {
             _vm.auth != ""
               ? _c(
                   "router-link",
-                  { staticClass: "inf", attrs: { to: "/main/profile" } },
+                  {
+                    staticClass: "inf",
+                    attrs: { to: "/main/profile/" + _vm.auth.username }
+                  },
                   [
                     _c("div", { staticClass: "container info" }, [
                       _c("i", { staticClass: "fa fa-user icon" }),
@@ -24883,7 +24886,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "home") return "js/home.js";
+/******/ 			if (chunkId === "home") return "public/js/home.js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
