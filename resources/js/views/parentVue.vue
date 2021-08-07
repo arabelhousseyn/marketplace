@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <fixedbox-container :listings="listings" />
+        <fixedbox-container @move="move" :path="path" :listings="listings" />
     </div>
 </template>
 <style>

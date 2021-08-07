@@ -32,9 +32,15 @@
 <script>
 import spinnerLoading from './spinnerLoading.vue'
 export default {
-    props : ['listings'],
+    props : ['listings','path'],
     components : {
         spinnerLoading
+    },
+    methods : {
+        move(listing)
+        {
+            this.$emit('move',listing)
+        }
     }
 }
 </script>

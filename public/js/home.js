@@ -45,9 +45,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['listings'],
+  props: ['listings', 'path'],
   components: {
     spinnerLoading: _spinnerLoading_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  methods: {
+    move: function move(listing) {
+      this.$emit('move', listing);
+    }
   }
 });
 
@@ -526,7 +531,12 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "main" },
-    [_c("fixedbox-container", { attrs: { listings: _vm.listings } })],
+    [
+      _c("fixedbox-container", {
+        attrs: { path: _vm.path, listings: _vm.listings },
+        on: { move: _vm.move }
+      })
+    ],
     1
   )
 }
