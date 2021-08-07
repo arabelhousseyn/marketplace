@@ -110,6 +110,6 @@ class CategoryController extends Controller
 
     public function getListingByCategory()
     {
-        return  CategoryResource::collection(Category::with('listings')->paginate(5));
+        return  CategoryResource::collection(Category::with('listings')->parent(null)->paginate(5));
     }
 }
