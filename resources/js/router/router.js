@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import categoryVue from '../views/categoryVue.vue'
 import listingVue from '../views/listingVue.vue'
+import profileVue from '../views/profileVue.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,6 +20,11 @@ const routes = [
     path : "/main/product/:id",
     name: "listingVue",
     component: listingVue
+  },
+  {
+    path : "/main/profile/",
+    name: "profileVue",
+    component: profileVue
   },
   
 ]

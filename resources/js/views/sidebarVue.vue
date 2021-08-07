@@ -7,7 +7,7 @@
                <router-link class="inf" to="/"><div class="container info"><i class="fa fa-home icon"></i> <span>Browse all</span></div></router-link>
                <router-link  v-if="auth != ''"  class="inf" to="/main/notification"><div class="container info"><i class="fa fa-bell icon"></i> <span>Notifications</span></div></router-link>
                <router-link  v-if="auth != ''" class="inf" to="/main/inbox"><div class="container info"><i class="fa fa-inbox icon"></i> <span>Inbox</span></div></router-link>
-               <router-link  v-if="auth != ''"  class="inf" to="/main/account"><div class="container info"><i class="fa fa-user icon"></i> <span>Your account</span></div></router-link>
+               <router-link  v-if="auth != ''"  class="inf" to="/main/profile"><div class="container info"><i class="fa fa-user icon"></i> <span>Your account</span></div></router-link>
                <div class="divider"></div>
                <div v-if="auth != ''" class="container"><a class="inf1" href='#' data-toggle="modal" data-target="#addListing"><div class="info1"><i class="fa fa-plus"></i> <span>Create New Listing</span></div></a></div>
                <div class="divider"></div>
