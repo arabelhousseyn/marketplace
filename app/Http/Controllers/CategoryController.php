@@ -5,6 +5,7 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Services\CategoryService;
+use App\Http\Resources\CategoryResource;
 class CategoryController extends Controller
 {
     /**
@@ -105,5 +106,10 @@ class CategoryController extends Controller
         } catch (Throwable $th) {
             return response()->json(['message' => 'nont found'], 404);
         }
+    }
+
+    public function getListingByCategory()
+    {
+        return  CategoryResource::collection(Category::with('listings')->paginate(5));
     }
 }

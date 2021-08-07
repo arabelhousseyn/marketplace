@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory,SoftDeletes;
     
-    protected $fillable = ['name_fr','name_ar','name_en','icon'];
+    protected $fillable = ['title_fr','title_ar','title_en','icon'];
     protected $hidden = ['created_at','updated_at','deleted_at'];
 
     public function children()
@@ -21,5 +21,10 @@ class Category extends Model
     public function listings()
     {
         return $this->hasMany(Listing::class);
+    }
+
+    public function scopeParent($builder,$statu)
+    {
+        return $builder->where('parent_id',$statu);
     }
 }
