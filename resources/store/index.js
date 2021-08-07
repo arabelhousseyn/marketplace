@@ -10,7 +10,7 @@ export default new Vuex.Store({
      productsByCategory : [],
      imagePath : 'http://hocine.marketplace/storage/app/public/listing/',
      auth : null,
-     location : '0,0'
+     location : '0,0',
   },
   getters : {
   },

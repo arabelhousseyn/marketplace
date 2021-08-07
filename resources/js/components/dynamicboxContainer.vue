@@ -2,7 +2,7 @@
     <div v-if="data != undefined" class="box">
                 <div class="heading">
                     <h1 class="title">{{data.title_en}}</h1>
-                    <a href="">See All</a>
+                    <router-link :to="`/main/category/${data.id}`">See All</router-link>
                 </div>
                 <div class="divider"></div>
                 <div v-if="data.listings.length > 0" class="row">

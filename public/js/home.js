@@ -600,13 +600,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.data != undefined
     ? _c("div", { staticClass: "box" }, [
-        _c("div", { staticClass: "heading" }, [
-          _c("h1", { staticClass: "title" }, [
-            _vm._v(_vm._s(_vm.data.title_en))
-          ]),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "" } }, [_vm._v("See All")])
-        ]),
+        _c(
+          "div",
+          { staticClass: "heading" },
+          [
+            _c("h1", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.data.title_en))
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { attrs: { to: "/main/category/" + _vm.data.id } },
+              [_vm._v("See All")]
+            )
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "divider" }),
         _vm._v(" "),
