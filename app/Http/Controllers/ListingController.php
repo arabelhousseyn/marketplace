@@ -158,7 +158,7 @@ class ListingController extends Controller
 
     public function listingsByUser($username)
     {
-       $user = User::with('listings')->where('username',$username)->first();
+       $user = User::withCount('listings')->where('username',$username)->first();
        if($user)
        {
         return new UserResource($user);

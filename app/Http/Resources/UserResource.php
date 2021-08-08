@@ -22,7 +22,8 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'online' => $this->online,
             'statu' => $this->statu,
-            'listings' => ListingResource::collection($this->listings)
+            'listings' => ListingResource::collection($this->listings),
+            'listings_count' => $this->listings_count
         ];
     }
 }
