@@ -47,17 +47,11 @@ export default {
     },
     mounted(){
         let id = this.$route.params.id
-       let run =  axios.get('/api/categories/subCategories/' + id ,this.cors())
-        run.then(e=>{
-            if(e.status == 200)
-            {
-               this.subCategory = e.data
-            }
-        })
+       this.fetchData(id)
     },
     methods: {
     fetchData(id) {
-        axios.get('/api/categories/subCategories/' + id ,this.cors())
+        axios.get(`/api/categories/subCategories/${id}`,this.cors())
         .then(e => {
             this.subCategory =  e.data
         });

@@ -33,6 +33,7 @@ class ListingResource extends JsonResource
             doubleval(explode(',',$this->location)[1])),
             'created_at' => $this->created_at->diffForHumans(),
             'user' => $this->user,
+            'creation' => $this->created_at->isoFormat('dddd, MMMM Do YYYY')
         ];
     }
 }
