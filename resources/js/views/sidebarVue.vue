@@ -17,22 +17,17 @@
                <router-link v-for="(category,index) in categories" :key="index" :to="'/main/category/' + category.id" class="inf"><div class="container info"><i :class="category.icon + ' icon'"></i> <span>{{category.title_en}}</span></div></router-link>
               </div>
           </div>
-          <addlisting-modal />
         </div>
 </template>
 
 <script>
 import axios from 'axios'
-import addlistingModal from '../modals/addListingModal.vue'
 export default {
   data :()=>{
     return{
       categories : null,
       auth : "",
     }
-  },
-  components : {
-    addlistingModal
   },
   mounted()
   {

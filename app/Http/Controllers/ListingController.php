@@ -117,23 +117,19 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ListingRequest $request, $id)
     {
-        try {
-            $listing = Listing::findOrFail($id);
-    
-        $listing->update([
-            'title' => $request->title,
-            'price' => $request->price,
-            'description' => $request->description,
-            'location' => $request->location,
-            'category_id' => $request->category_id,
-            'available' => $request->available
-        ]);
-            return response()->json($listing, 200);
-        } catch (NotFoundHttpException $th) {
-            return response()->json(['message' => 'not found'], 404);
+        if(Auth::user())
+        {
+            try {
+                $listing = Listing::findOrFail($id);
+            $listing->update((array) $request->all());
+                return response()->json(['message' => 'updated'], 204);
+            } catch (NotFoundHttpException $th) {
+                return response()->json(['message' => 'not found'], 404);
+            }
         }
+        return response()->json(['message' => 'you sould to be authenticated as user to handle the request'], 401);
         
     }
 

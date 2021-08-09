@@ -42,7 +42,10 @@
                                        <div class="location">{{listing.location.formatted_address}}</div>
                                        <div class="actions">
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
+                                                <a class="inf1" href='#' @click="getSignleListing(listing)" data-toggle="modal" data-target="#editListing"><div class="info1"><i class="fa fa-pen"></i> <span>Edit listing</span></div></a>
+                                            </div>
+                                            <div class="col-lg-6">
                                                 <a class="inf1" @click="getSignleListing(listing)" href='#' data-toggle="modal" data-target="#delListing"><div style='background: #3a3b3c;color: white;' class="info1"><i class="fa fa-minus"></i> <span>Delete listing</span></div></a>
                                             </div>
                                         </div>
@@ -68,16 +71,16 @@
                </div>
            </div>
         </div>
-        <addlisting-modal />
         <removelisting-modal @removed='removed' v-if="listing != null" :listing="listing" />
+        <updatelisting-modal v-if="listing != null" :listing="listing" />
     </div>
 </template>
 
 <script>
 import spinnerLoading from './spinnerLoading.vue'
-import addlistingModal from '../modals/addListingModal.vue'
 import MoneyFormat from "vue-money-format"
 import removelistingModal from '../modals/removelistingModal.vue'
+import updatelistingModal from '../modals/updatelistingModal.vue'
 export default {
     props : ['data'],
     data : ()=>{
@@ -87,9 +90,9 @@ export default {
     },
     components : {
         spinnerLoading,
-        addlistingModal,
         "money-format": MoneyFormat,
-        removelistingModal
+        removelistingModal,
+        updatelistingModal
     },
     methods : {
         move(listing)

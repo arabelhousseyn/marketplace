@@ -7,17 +7,20 @@
         </section>
         </div>
         <router-view />
+        <addlisting-modal v-if="auth !== ''" />
     </div>
 </template>
 
 <script>
 import navbarVue from './navbarVue.vue'
 import sidebarVue from './sidebarVue.vue'
+import addlistingModal from '../modals/addListingModal.vue'
 export default {
     props : ['auth'],
     components : {
         navbarVue,
-        sidebarVue
+        sidebarVue,
+        addlistingModal
     },
     methods : {
         position(pos)
