@@ -28,9 +28,9 @@
                             </div>
                         <div class="sizedBox" style="margin-top:20px;"></div>
                            <div style="margin-top:20px;" v-for="(listing,index) in data.listings" :key="index" class="box">
-                               <div @click="move(listing)" style="cursor:pointer;" class="information container">
+                               <div style="cursor:pointer;" class="information container">
                                    <div class="row">
-                                       <div class="col-lg-2">
+                                       <div @click="move(listing)" class="col-lg-2">
                                            <img style="width:100px;height:100px;" v-if="listing.images.length > 0" :src="listing.images[0]" alt="image">
                                            <img v-else src="https://via.placeholder.com/100" alt="image">
                                        </div>
@@ -42,11 +42,8 @@
                                        <div class="location">{{listing.location.formatted_address}}</div>
                                        <div class="actions">
                                         <div class="row">
-                                            <div class="col-lg-6">
-                                                <a class="inf1" href='#' data-toggle="modal" data-target="#editListing"><div class="info1"><i class="fa fa-pen"></i> <span>Edit listing</span></div></a>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <a class="inf1" href='#' data-toggle="modal" data-target="#delListing"><div style='background: #3a3b3c;color: white;' class="info1"><i class="fa fa-minus"></i> <span>Delete listing</span></div></a>
+                                            <div class="col-lg-12">
+                                                <a class="inf1" @click="getSignleListing(listing)" href='#' data-toggle="modal" data-target="#delListing"><div style='background: #3a3b3c;color: white;' class="info1"><i class="fa fa-minus"></i> <span>Delete listing</span></div></a>
                                             </div>
                                         </div>
                                        </div>
@@ -72,6 +69,7 @@
            </div>
         </div>
         <addlisting-modal />
+        <removelisting-modal @removed='removed' v-if="listing != null" :listing="listing" />
     </div>
 </template>
 
@@ -79,17 +77,32 @@
 import spinnerLoading from './spinnerLoading.vue'
 import addlistingModal from '../modals/addListingModal.vue'
 import MoneyFormat from "vue-money-format"
+import removelistingModal from '../modals/removelistingModal.vue'
 export default {
     props : ['data'],
+    data : ()=>{
+        return{
+            listing : null,
+        }
+    },
     components : {
         spinnerLoading,
         addlistingModal,
         "money-format": MoneyFormat,
+        removelistingModal
     },
     methods : {
         move(listing)
         {
             this.$emit('move',listing)
+        },
+        getSignleListing(listing)
+        {
+            this.listing = listing
+        },
+        removed(listingGetter)
+        {
+           this.data.listings =  this.data.listings.filter(e => e.id != listingGetter.id)
         }
     }
 }

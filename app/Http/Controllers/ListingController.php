@@ -145,14 +145,18 @@ class ListingController extends Controller
      */
     public function destroy($id)
     {
+       if(Auth::user())
+       {
         try {
             $listing = Listing::findOrFail($id);
     
             $listing->delete();
-            return response()->json($listing, 200);
+            return response()->json(['message' => 'deleted'], 200);
         } catch (NotFoundHttpException $th) {
             return response()->json(['message' => 'not found'], 404);
         }
+       }
+       return response()->json(['message' => 'you sould to be authenticated as user to handle the request'], 401);
     }
 
 

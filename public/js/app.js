@@ -1848,6 +1848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spinnerLoading_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./spinnerLoading.vue */ "./resources/js/components/spinnerLoading.vue");
 /* harmony import */ var _modals_addListingModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modals/addListingModal.vue */ "./resources/js/modals/addListingModal.vue");
 /* harmony import */ var vue_money_format__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-money-format */ "./node_modules/vue-money-format/dist/money-format.esm.js");
+/* harmony import */ var _modals_removelistingModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modals/removelistingModal.vue */ "./resources/js/modals/removelistingModal.vue");
 //
 //
 //
@@ -1923,21 +1924,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
+  data: function data() {
+    return {
+      listing: null
+    };
+  },
   components: {
     spinnerLoading: _spinnerLoading_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     addlistingModal: _modals_addListingModal_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    "money-format": vue_money_format__WEBPACK_IMPORTED_MODULE_2__.default
+    "money-format": vue_money_format__WEBPACK_IMPORTED_MODULE_2__.default,
+    removelistingModal: _modals_removelistingModal_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   methods: {
     move: function move(listing) {
       this.$emit('move', listing);
+    },
+    getSignleListing: function getSignleListing(listing) {
+      this.listing = listing;
+    },
+    removed: function removed(listingGetter) {
+      this.data.listings = this.data.listings.filter(function (e) {
+        return e.id != listingGetter.id;
+      });
     }
   }
 });
@@ -2223,6 +2237,60 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   mounted: function mounted() {
     this.formData.location = this.$store.state.location;
     this.categories = this.$store.state.categories;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['listing'],
+  methods: {
+    remove: function remove() {
+      var _this = this;
+
+      var run = axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/listing/".concat(this.listing.id, "/"), this.cors());
+      run.then(function (e) {
+        if (e.status == 200) {
+          _this.$emit('removed', _this.listing);
+        }
+      });
+    }
   }
 });
 
@@ -4339,6 +4407,45 @@ component.options.__file = "resources/js/modals/addListingModal.vue"
 
 /***/ }),
 
+/***/ "./resources/js/modals/removelistingModal.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/modals/removelistingModal.vue ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./removelistingModal.vue?vue&type=template&id=aad56270& */ "./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270&");
+/* harmony import */ var _removelistingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./removelistingModal.vue?vue&type=script&lang=js& */ "./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _removelistingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__.render,
+  _removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/modals/removelistingModal.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/views/categoryVue.vue":
 /*!********************************************!*\
   !*** ./resources/js/views/categoryVue.vue ***!
@@ -4624,6 +4731,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addListingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./addListingModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/addListingModal.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addListingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_removelistingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./removelistingModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_removelistingModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -5018,6 +5141,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_removelistingModal_vue_vue_type_template_id_aad56270___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./removelistingModal.vue?vue&type=template&id=aad56270& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270&");
+
+
+/***/ }),
+
 /***/ "./resources/js/views/categoryVue.vue?vue&type=template&id=5f16410e&":
 /*!***************************************************************************!*\
   !*** ./resources/js/views/categoryVue.vue?vue&type=template&id=5f16410e& ***!
@@ -5353,35 +5493,41 @@ var render = function() {
                                   "div",
                                   {
                                     staticClass: "information container",
-                                    staticStyle: { cursor: "pointer" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.move(listing)
-                                      }
-                                    }
+                                    staticStyle: { cursor: "pointer" }
                                   },
                                   [
                                     _c("div", { staticClass: "row" }, [
-                                      _c("div", { staticClass: "col-lg-2" }, [
-                                        listing.images.length > 0
-                                          ? _c("img", {
-                                              staticStyle: {
-                                                width: "100px",
-                                                height: "100px"
-                                              },
-                                              attrs: {
-                                                src: listing.images[0],
-                                                alt: "image"
-                                              }
-                                            })
-                                          : _c("img", {
-                                              attrs: {
-                                                src:
-                                                  "https://via.placeholder.com/100",
-                                                alt: "image"
-                                              }
-                                            })
-                                      ]),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "col-lg-2",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.move(listing)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          listing.images.length > 0
+                                            ? _c("img", {
+                                                staticStyle: {
+                                                  width: "100px",
+                                                  height: "100px"
+                                                },
+                                                attrs: {
+                                                  src: listing.images[0],
+                                                  alt: "image"
+                                                }
+                                              })
+                                            : _c("img", {
+                                                attrs: {
+                                                  src:
+                                                    "https://via.placeholder.com/100",
+                                                  alt: "image"
+                                                }
+                                              })
+                                        ]
+                                      ),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col-lg-8" }, [
                                         _c(
@@ -5428,7 +5574,49 @@ var render = function() {
                                               ]
                                             ),
                                             _vm._v(" "),
-                                            _vm._m(2, true)
+                                            _c(
+                                              "div",
+                                              { staticClass: "actions" },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "row" },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass: "col-lg-12"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass: "inf1",
+                                                            attrs: {
+                                                              href: "#",
+                                                              "data-toggle":
+                                                                "modal",
+                                                              "data-target":
+                                                                "#delListing"
+                                                            },
+                                                            on: {
+                                                              click: function(
+                                                                $event
+                                                              ) {
+                                                                return _vm.getSignleListing(
+                                                                  listing
+                                                                )
+                                                              }
+                                                            }
+                                                          },
+                                                          [_vm._m(2, true)]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
                                           ]
                                         )
                                       ])
@@ -5484,7 +5672,14 @@ var render = function() {
                 ])
           ]),
       _vm._v(" "),
-      _c("addlisting-modal")
+      _c("addlisting-modal"),
+      _vm._v(" "),
+      _vm.listing != null
+        ? _c("removelisting-modal", {
+            attrs: { listing: _vm.listing },
+            on: { removed: _vm.removed }
+          })
+        : _vm._e()
     ],
     1
   )
@@ -5567,58 +5762,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "actions" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-6" }, [
-          _c(
-            "a",
-            {
-              staticClass: "inf1",
-              attrs: {
-                href: "#",
-                "data-toggle": "modal",
-                "data-target": "#editListing"
-              }
-            },
-            [
-              _c("div", { staticClass: "info1" }, [
-                _c("i", { staticClass: "fa fa-pen" }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Edit listing")])
-              ])
-            ]
-          )
-        ]),
+    return _c(
+      "div",
+      {
+        staticClass: "info1",
+        staticStyle: { background: "#3a3b3c", color: "white" }
+      },
+      [
+        _c("i", { staticClass: "fa fa-minus" }),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6" }, [
-          _c(
-            "a",
-            {
-              staticClass: "inf1",
-              attrs: {
-                href: "#",
-                "data-toggle": "modal",
-                "data-target": "#delListing"
-              }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "info1",
-                  staticStyle: { background: "#3a3b3c", color: "white" }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-minus" }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Delete listing")])
-                ]
-              )
-            ]
-          )
-        ])
-      ])
-    ])
+        _c("span", [_vm._v("Delete listing")])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -6212,6 +6367,113 @@ var staticRenderFns = [
         },
         [_vm._v("Fermer")]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/modals/removelistingModal.vue?vue&type=template&id=aad56270& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      staticStyle: { color: "#313131" },
+      attrs: {
+        id: "delListing",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", "data-dismiss": "modal" }
+              },
+              [_vm._v("Close")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                attrs: { type: "button", "data-dismiss": "modal" },
+                on: { click: _vm.remove }
+              },
+              [_c("i", { staticClass: "fa fa-minus" }), _vm._v(" Delete")]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Delete listing")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", [
+        _vm._v(" If you want to delete a listing "),
+        _c("span", { staticClass: "badge badge-danger" }, [_vm._v("Delete")]),
+        _vm._v(" else click "),
+        _c("span", { staticClass: "badge badge-secondary" }, [_vm._v("Close")])
+      ])
     ])
   }
 ]
