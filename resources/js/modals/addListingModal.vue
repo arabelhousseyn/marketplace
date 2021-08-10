@@ -117,7 +117,7 @@ export default {
 
             let run = axios.post('/api/listing',data,this.cors())
             run.then(e=>{
-                if(e.status == 200)
+                if(e.status == 201)
                 {
                     location.reload()
                 }

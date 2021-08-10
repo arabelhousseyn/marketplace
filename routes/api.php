@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,15 +21,19 @@ use App\Http\Controllers\AdminController;
 Route::group(['middleware' => 'auth:sanctum'], function(){
     /// categories
     Route::resource('categories', CategoryController::class);
-    Route::get('categories/restore/{id}',[CategoryController::class,'restore'])->where('id','[0-9]+');
-    Route::get('categories/forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('admin');
-    Route::get('categories/subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
+    Route::prefix('categories')->group(function () {
+    Route::get('restore/{id}',[CategoryController::class,'restore'])->where('id','[0-9]+');
+    Route::get('forceDestroy/{id}',[CategoryController::class,'forceDestroy'])->where('id','[0-9]+')->middleware('admin');
+    Route::get('subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
+    });
     Route::get('getListingByCategory',[CategoryController::class,'getListingByCategory']);
     // listings 
      Route::resource('listing', ListingController::class);
      Route::get('listingsByUser/{username}',[ListingController::class,'listingsByUser'])->whereAlphaNumeric('username');
      // admin login
      Route::post('adminLogin',[AdminController::class,'index']);
+     //// update information about user Auth
+     Route::put('/updateUser',[UserController::class,'update']);
     });
     
     
