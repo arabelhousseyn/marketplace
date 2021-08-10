@@ -31,7 +31,7 @@
                                <div style="cursor:pointer;" class="information container">
                                    <div class="row">
                                        <div @click="move(listing)" class="col-lg-2">
-                                           <img style="width:100px;height:100px;" v-if="listing.images.length > 0" :src="listing.images[0]" alt="image">
+                                           <img style="width:100px;height:100px;" v-if="listing.images.length > 0" :src="path + listing.images[0].url" alt="image">
                                            <img v-else src="https://via.placeholder.com/100" alt="image">
                                        </div>
                                        <div class="col-lg-8">
@@ -86,6 +86,7 @@ export default {
     data : ()=>{
         return{
             listing : null,
+            path : null,
         }
     },
     components : {
@@ -107,6 +108,10 @@ export default {
         {
            this.data.listings =  this.data.listings.filter(e => e.id != listingGetter.id)
         }
+    },
+    created()
+    {
+        this.path = this.$store.state.imagePath
     }
 }
 </script>

@@ -24,7 +24,7 @@
                                <div @click="move(listing)" style="cursor:pointer;" class="information container">
                                    <div class="row">
                                        <div class="col-lg-2">
-                                           <img style="width:100px;height:100px;" v-if="listing.images.length > 0" :src="listing.images[0]" alt="image">
+                                           <img style="width:100px;height:100px;" v-if="listing.images.length > 0" :src="path + listing.images[0].url" alt="image">
                                            <img v-else src="https://via.placeholder.com/100" alt="image">
                                        </div>
                                        <div class="col-lg-8">
@@ -64,6 +64,11 @@ import addlistingModal from '../modals/addListingModal.vue'
 import MoneyFormat from "vue-money-format"
 export default {
     props : ['data'],
+    data : ()=>{
+        return{
+            path : null,
+        }
+    },
     components : {
         spinnerLoading,
         addlistingModal,
@@ -74,6 +79,10 @@ export default {
         {
             this.$emit('move',listing)
         }
+    },
+    created()
+    {
+        this.path = this.$store.state.imagePath
     }
 }
 </script>
