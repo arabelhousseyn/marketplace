@@ -3,6 +3,11 @@
         <div style="text-align:center;" class="disp">
             <div class="informationchange">
                 <h4>change Information</h4>
+                <div v-if="errors.length > 0" class="alert alert-danger">
+          <ul>
+              <li v-for="(error,index) in errors" :key="index">{{error}}</li>
+          </ul>
+      </div>
             <form @submit.prevent="update" method="post">
                 <div class="form-group">
                     <label for="fname">FirstName</label>
@@ -37,6 +42,7 @@ export default {
                 phone : null,
             },
             auth : null,
+            errors : []
         }
     },
     methods : {
@@ -53,7 +59,11 @@ export default {
                 }
             })
             run.catch(e=>{
-                console.log(e.data)
+                 let errors = e.response.data.errors
+                for (const [key, value] of Object.entries(errors)) {
+                    this.errors.push(value[0])
+                    this.disabled = false
+              }
             })
         },
     },

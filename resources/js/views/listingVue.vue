@@ -82,9 +82,9 @@
                   <div class="sellerInfo">
                     <h5>Seller information</h5>
                     <p class="contact">
-                      <span
+                      <router-link class="txt" :to="`/main/profile/${listing.user.username}`"><span
                         >{{ listing.user.fname }} {{ listing.user.lname }}</span
-                      >
+                      ></router-link>
                       <span class="join"
                         >Joined marketplace in
                         {{ listing.user.created_at.split("-")[0] }}</span
@@ -159,6 +159,10 @@ Send message</textarea
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.txt{
+      text-decoration: none;
+    color: white;
 }
 </style>
 <script>
