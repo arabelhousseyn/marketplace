@@ -71,12 +71,10 @@ class ListingController extends Controller
                         ]);
                        }
 
-               return response()->json($listing->with('attributes','images')->orderBy('id','DESC')->first(), 200);
+               return response()->json($listing->with('attributes','images')->orderBy('id','DESC')->first(), 201);
            }else{
-            abort(500,['message' => 'error']);
+            return response()->json(['message' => 'error'], 500);
            }
-       }else{
-           abort(500,['message' => $request]);
        }
     }
 
@@ -97,17 +95,6 @@ class ListingController extends Controller
             return response()->json(['message' => 'not found'], 404);
         }
 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

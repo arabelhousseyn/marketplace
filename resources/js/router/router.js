@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import categoryVue from '../views/categoryVue.vue'
 import listingVue from '../views/listingVue.vue'
 import profileVue from '../views/profileVue.vue'
+import settingsVue from '../views/settingsVue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
     name: "profileVue",
     component: profileVue
   },
+  {
+    path : "/main/settings",
+    name: "settingsVue",
+    component: settingsVue
+  }
   
 ]
 

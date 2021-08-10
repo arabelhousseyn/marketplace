@@ -21,6 +21,7 @@
   </a>
   <div id='z23' class="dropdown-menu" aria-labelledby="show">
     <router-link class="dropdown-item" :to="`/main/profile/${auth.username}`">Profile</router-link>
+    <router-link class="dropdown-item" to="/main/settings/">Settings</router-link>
     <a class="dropdown-item" @click="logout" href="#">Logout</a>
   </div>
 </div>
