@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('subCategories/{id}',[CategoryController::class,'SubCategoriesByCategorie'])->where('id','[0-9]+');
     });
     Route::get('getListingByCategory',[CategoryController::class,'getListingByCategory']);
+    Route::get('listingByIdCtegory/{id}',[CategoryController::class,'listingByIdCtegory'])->where('id','[0-9]+');
     // listings 
      Route::resource('listing', ListingController::class);
      Route::get('listingsByUser/{username}',[ListingController::class,'listingsByUser'])->whereAlphaNumeric('username');

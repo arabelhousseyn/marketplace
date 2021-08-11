@@ -112,4 +112,9 @@ class CategoryController extends Controller
     {
         return  CategoryResource::collection(Category::with('listings')->parent(null)->paginate(5));
     }
+
+    public function listingByIdCtegory($id)
+    {
+        return CategoryResource::collection(Category::with('listings')->where('id','=',$id)->paginate(5));
+    }
 }
