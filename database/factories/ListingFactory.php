@@ -28,7 +28,7 @@ class ListingFactory extends Factory
             'location' => '0,0',
             'category_id' => 1,
             'available' => 0,
-            'user_id' => Auth::id()
+            'user_id' => 1
         ];
     }
 }
