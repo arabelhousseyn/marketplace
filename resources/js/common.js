@@ -7,7 +7,7 @@ export default {
         cors()
         {
             let headers = {
-                Authorization : "Bearer 1|eEi7hwzDZPvD4LAvCeTTFRlMbGGcep2Dv8JomWXg",
+                Authorization : "Bearer 1|qkrNjhm7R0l8FlRbl48KLLPH6Ypj6TBNwrQVaHy5",
                 'Content-Type': 'application/json',
             }
             return {headers}
