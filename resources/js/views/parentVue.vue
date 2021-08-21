@@ -61,7 +61,7 @@ export default {
     {
         this.path = this.$store.state.imagePath
 
-        let run = axios.get('/api/listing',this.cors())
+        let run = axios.get('/api/listing/',this.cors())
         run.then(e=>{
             this.listings = e.data
         })

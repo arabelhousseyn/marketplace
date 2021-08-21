@@ -157,7 +157,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var _this2 = this;
 
     this.path = this.$store.state.imagePath;
-    var run = axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/listing', this.cors());
+    var run = axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/listing/', this.cors());
     run.then(function (e) {
       _this2.listings = e.data;
     });

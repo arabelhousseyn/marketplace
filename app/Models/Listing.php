@@ -39,4 +39,9 @@ class Listing extends Model
     {
         return $builder->where('available',$available)->orderBy('id',$order);
     }
+
+    public function filterMap($data,$location)
+    {
+        
+    }
 }
